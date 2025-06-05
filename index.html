@@ -1,0 +1,1105 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Café Zé-Zéa | Faro, Portugal</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Playfair+Display:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --areia: #f4e9d8;
+        --azul-mar: #1e88e5;
+        --azul-mar-claro: #e3f2fd;
+        --verde-agua: #80cbc4;
+        --marrom-madeira: #6d4c41;
+        --branco: #ffffff;
+        --preto: #333333;
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Montserrat", sans-serif;
+        color: var(--preto);
+        background-color: var(--areia);
+        line-height: 1.6;
+      }
+
+      h1,
+      h2,
+      h3 {
+        font-family: "Playfair Display", serif;
+        font-weight: 700;
+        color: var(--marrom-madeira);
+      }
+
+      h2 {
+        font-size: 2rem;
+        margin-bottom: 1.5rem;
+        text-align: center;
+        position: relative;
+        padding-bottom: 0.5rem;
+      }
+
+      h2::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 80px;
+        height: 3px;
+        background: var(--azul-mar);
+      }
+
+      section {
+        padding: 4rem 1rem;
+      }
+
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+
+      /* Header */
+      header {
+        background-color: var(--branco);
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        position: fixed;
+        width: 100%;
+        top: 0;
+        z-index: 1000;
+      }
+
+      .header-container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 1rem;
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+
+      .logo {
+        font-family: "Playfair Display", serif;
+        font-size: 1.8rem;
+        color: var(--marrom-madeira);
+        text-decoration: none;
+        font-weight: 700;
+        display: flex;
+        align-items: center;
+      }
+
+      .logo i {
+        margin-right: 0.5rem;
+        color: var(--azul-mar);
+      }
+
+      .menu-toggle {
+        font-size: 1.5rem;
+        color: var(--marrom-madeira);
+        background: none;
+        border: none;
+        cursor: pointer;
+      }
+
+      .nav-menu {
+        position: fixed;
+        top: 70px;
+        left: -100%;
+        background-color: var(--branco);
+        width: 100%;
+        height: calc(100vh - 70px);
+        transition: all 0.3s ease;
+        padding: 2rem;
+        box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+      }
+
+      .nav-menu.active {
+        left: 0;
+      }
+
+      .nav-menu ul {
+        list-style: none;
+      }
+
+      .nav-menu ul li {
+        margin-bottom: 1.5rem;
+      }
+
+      .nav-menu ul li a {
+        text-decoration: none;
+        color: var(--preto);
+        font-size: 1.2rem;
+        transition: color 0.3s;
+        display: block;
+        padding: 0.5rem 0;
+        border-bottom: 1px solid var(--areia);
+      }
+
+      .nav-menu ul li a:hover {
+        color: var(--azul-mar);
+      }
+
+      /* Hero Section */
+      .hero {
+        background-image: linear-gradient(
+            rgba(0, 0, 0, 0.2),
+            rgba(0, 0, 0, 0.2)
+          ),
+          url("https://images.unsplash.com/photo-1507525428034-b723cf961d3e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1473&q=80");
+        background-size: cover;
+        background-position: center;
+        height: 100vh;
+        display: flex;
+        align-items: center;
+        text-align: center;
+        color: var(--branco);
+        margin-top: 70px;
+        position: relative;
+      }
+
+      .hero::before {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 100px;
+        background: linear-gradient(transparent, var(--areia));
+      }
+
+      .hero-content {
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 0 1rem;
+        position: relative;
+        z-index: 1;
+      }
+
+      .hero h1 {
+        font-size: 2.5rem;
+        margin-bottom: 1rem;
+        text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+        color: var(--branco);
+      }
+
+      .hero p {
+        font-size: 1.2rem;
+        margin-bottom: 2rem;
+        text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+      }
+
+      .btn {
+        display: inline-block;
+        background-color: var(--azul-mar);
+        color: var(--branco);
+        padding: 0.8rem 2rem;
+        border-radius: 50px;
+        text-decoration: none;
+        font-weight: bold;
+        transition: all 0.3s;
+        border: 2px solid var(--azul-mar);
+        margin: 0.5rem;
+      }
+
+      .btn:hover {
+        background-color: transparent;
+        color: var(--branco);
+        transform: translateY(-3px);
+      }
+
+      .btn-outline {
+        background-color: transparent;
+        border: 2px solid var(--branco);
+      }
+
+      .btn-outline:hover {
+        background-color: var(--branco);
+        color: var(--azul-mar);
+      }
+
+      /* Sobre */
+      .sobre {
+        background-color: var(--branco);
+        position: relative;
+        overflow: hidden;
+      }
+
+      .sobre::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 20px;
+        background: url('data:image/svg+xml;utf8,<svg viewBox="0 0 1200 120" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none"><path d="M0,0V46.29c47.79,22.2,103.59,32.17,158,28,70.36-5.37,136.33-33.31,206.8-37.5C438.64,32.43,512.34,53.67,583,72.05c69.27,18,138.3,24.88,209.4,13.08,36.15-6,69.85-17.84,104.45-29.34C989.49,25,1113-14.29,1200,52.47V0Z" fill="%23F4E9D8" opacity=".25"/><path d="M0,0V15.81C13,36.92,27.64,56.86,47.69,72.05,99.41,111.27,165,111,224.58,91.58c31.15-10.15,60.09-26.07,89.67-39.8,40.92-19,84.73-46,130.83-49.67,36.26-2.85,70.9,9.42,98.6,31.56,31.77,25.39,62.32,62,103.63,73,40.44,10.79,81.35-6.69,119.13-24.28s75.16-39,116.92-43.05c59.73-5.85,113.28,22.88,168.9,38.84,30.2,8.66,59,6.17,87.09-7.5,22.43-10.89,48-26.93,60.65-49.24V0Z" fill="%23F4E9D8" opacity=".5"/><path d="M0,0V5.63C149.93,59,314.09,71.32,475.83,42.57c43-7.64,84.23-20.12,127.61-26.46,59-8.63,112.48,12.24,165.56,35.4C827.93,77.22,886,95.24,951.2,90c86.53-7,172.46-45.71,248.8-84.81V0Z" fill="%23F4E9D8"/></svg>');
+        background-size: cover;
+        transform: rotate(180deg);
+      }
+
+      .sobre .container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .sobre-content {
+        display: flex;
+        flex-direction: column;
+        gap: 2rem;
+        margin-top: 2rem;
+      }
+
+      .sobre-texto {
+        flex: 1;
+      }
+
+      .sobre-texto p {
+        margin-bottom: 1rem;
+        text-align: justify;
+      }
+
+      .sobre-imagens {
+        flex: 1;
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 1rem;
+      }
+
+      .sobre-imagem {
+        border-radius: 8px;
+        overflow: hidden;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        position: relative;
+      }
+
+      .sobre-imagem img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.5s;
+      }
+
+      .sobre-imagem:hover img {
+        transform: scale(1.05);
+      }
+
+      .sobre-imagem::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(to top, rgba(0, 0, 0, 0.3), transparent);
+      }
+
+      /* Cardápio */
+      .cardapio {
+        background-color: var(--azul-mar-claro);
+        position: relative;
+        overflow: hidden;
+      }
+
+      .cardapio::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 20px;
+        background: url('data:image/svg+xml;utf8,<svg viewBox="0 0 1200 120" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none"><path d="M0,0V46.29c47.79,22.2,103.59,32.17,158,28,70.36-5.37,136.33-33.31,206.8-37.5C438.64,32.43,512.34,53.67,583,72.05c69.27,18,138.3,24.88,209.4,13.08,36.15-6,69.85-17.84,104.45-29.34C989.49,25,1113-14.29,1200,52.47V0Z" fill="%23E3F2FD" opacity=".25"/><path d="M0,0V15.81C13,36.92,27.64,56.86,47.69,72.05,99.41,111.27,165,111,224.58,91.58c31.15-10.15,60.09-26.07,89.67-39.8,40.92-19,84.73-46,130.83-49.67,36.26-2.85,70.9,9.42,98.6,31.56,31.77,25.39,62.32,62,103.63,73,40.44,10.79,81.35-6.69,119.13-24.28s75.16-39,116.92-43.05c59.73-5.85,113.28,22.88,168.9,38.84,30.2,8.66,59,6.17,87.09-7.5,22.43-10.89,48-26.93,60.65-49.24V0Z" fill="%23E3F2FD" opacity=".5"/><path d="M0,0V5.63C149.93,59,314.09,71.32,475.83,42.57c43-7.64,84.23-20.12,127.61-26.46,59-8.63,112.48,12.24,165.56,35.4C827.93,77.22,886,95.24,951.2,90c86.53-7,172.46-45.71,248.8-84.81V0Z" fill="%23E3F2FD"/></svg>');
+        background-size: cover;
+        transform: rotate(180deg);
+      }
+
+      .categorias {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 1rem;
+        margin-bottom: 2rem;
+      }
+
+      .categoria-btn {
+        background-color: var(--branco);
+        border: 2px solid var(--azul-mar);
+        color: var(--azul-mar);
+        padding: 0.5rem 1.5rem;
+        border-radius: 50px;
+        cursor: pointer;
+        transition: all 0.3s;
+        font-weight: bold;
+      }
+
+      .categoria-btn.active,
+      .categoria-btn:hover {
+        background-color: var(--azul-mar);
+        color: var(--branco);
+      }
+
+      .produtos {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+        gap: 2rem;
+      }
+
+      .produto {
+        background-color: var(--branco);
+        border-radius: 8px;
+        overflow: hidden;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s;
+        position: relative;
+      }
+
+      .produto:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+      }
+
+      .produto-imagem {
+        height: 200px;
+        overflow: hidden;
+      }
+
+      .produto-imagem img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.5s;
+      }
+
+      .produto:hover .produto-imagem img {
+        transform: scale(1.1);
+      }
+
+      .produto-info {
+        padding: 1.5rem;
+      }
+
+      .produto-info h3 {
+        margin-bottom: 0.5rem;
+        color: var(--marrom-madeira);
+      }
+
+      .produto-info .descricao {
+        font-size: 0.9rem;
+        color: #666;
+        margin-bottom: 0.5rem;
+      }
+
+      .produto-info .preco {
+        color: var(--azul-mar);
+        font-weight: bold;
+        font-size: 1.2rem;
+      }
+
+      /* Localização */
+      .localizacao {
+        background-color: var(--branco);
+        position: relative;
+      }
+
+      .localizacao::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 20px;
+        background: url('data:image/svg+xml;utf8,<svg viewBox="0 0 1200 120" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none"><path d="M0,0V46.29c47.79,22.2,103.59,32.17,158,28,70.36-5.37,136.33-33.31,206.8-37.5C438.64,32.43,512.34,53.67,583,72.05c69.27,18,138.3,24.88,209.4,13.08,36.15-6,69.85-17.84,104.45-29.34C989.49,25,1113-14.29,1200,52.47V0Z" fill="%23F4E9D8" opacity=".25"/><path d="M0,0V15.81C13,36.92,27.64,56.86,47.69,72.05,99.41,111.27,165,111,224.58,91.58c31.15-10.15,60.09-26.07,89.67-39.8,40.92-19,84.73-46,130.83-49.67,36.26-2.85,70.9,9.42,98.6,31.56,31.77,25.39,62.32,62,103.63,73,40.44,10.79,81.35-6.69,119.13-24.28s75.16-39,116.92-43.05c59.73-5.85,113.28,22.88,168.9,38.84,30.2,8.66,59,6.17,87.09-7.5,22.43-10.89,48-26.93,60.65-49.24V0Z" fill="%23F4E9D8" opacity=".5"/><path d="M0,0V5.63C149.93,59,314.09,71.32,475.83,42.57c43-7.64,84.23-20.12,127.61-26.46,59-8.63,112.48,12.24,165.56,35.4C827.93,77.22,886,95.24,951.2,90c86.53-7,172.46-45.71,248.8-84.81V0Z" fill="%23F4E9D8"/></svg>');
+        background-size: cover;
+        transform: rotate(180deg);
+      }
+
+      .mapa-container {
+        position: relative;
+        overflow: hidden;
+        padding-top: 75%;
+        border-radius: 8px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        margin-top: 2rem;
+        border: 5px solid var(--branco);
+      }
+
+      .mapa-container iframe {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        border: 0;
+      }
+
+      .info-local {
+        margin-top: 2rem;
+        text-align: center;
+        background: var(--areia);
+        padding: 1.5rem;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      }
+
+      .info-local p {
+        margin-bottom: 0.5rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.5rem;
+      }
+
+      .info-local i {
+        color: var(--azul-mar);
+      }
+
+      /* Contato */
+      .contato {
+        background-color: var(--areia);
+      }
+
+      .contato-form {
+        max-width: 600px;
+        margin: 0 auto;
+        background: var(--branco);
+        padding: 2rem;
+        border-radius: 8px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      }
+
+      .form-group {
+        margin-bottom: 1.5rem;
+      }
+
+      .form-group label {
+        display: block;
+        margin-bottom: 0.5rem;
+        font-weight: bold;
+        color: var(--marrom-madeira);
+      }
+
+      .form-group input,
+      .form-group textarea {
+        width: 100%;
+        padding: 0.8rem;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        font-family: "Montserrat", sans-serif;
+        transition: border-color 0.3s;
+      }
+
+      .form-group input:focus,
+      .form-group textarea:focus {
+        border-color: var(--azul-mar);
+        outline: none;
+      }
+
+      .form-group textarea {
+        height: 150px;
+        resize: vertical;
+      }
+
+      .redes-sociais {
+        display: flex;
+        justify-content: center;
+        gap: 1.5rem;
+        margin: 2rem 0;
+      }
+
+      .redes-sociais a {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 50px;
+        height: 50px;
+        background-color: var(--azul-mar);
+        color: var(--branco);
+        border-radius: 50%;
+        font-size: 1.5rem;
+        transition: all 0.3s;
+        text-decoration: none;
+      }
+
+      .redes-sociais a:hover {
+        background-color: var(--marrom-madeira);
+        transform: translateY(-5px);
+      }
+
+      /* Footer */
+      footer {
+        background-color: var(--marrom-madeira);
+        color: var(--branco);
+        padding: 3rem 1rem;
+        text-align: center;
+        position: relative;
+      }
+
+      footer::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 20px;
+        background: url('data:image/svg+xml;utf8,<svg viewBox="0 0 1200 120" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none"><path d="M0,0V46.29c47.79,22.2,103.59,32.17,158,28,70.36-5.37,136.33-33.31,206.8-37.5C438.64,32.43,512.34,53.67,583,72.05c69.27,18,138.3,24.88,209.4,13.08,36.15-6,69.85-17.84,104.45-29.34C989.49,25,1113-14.29,1200,52.47V0Z" fill="%236D4C41" opacity=".25"/><path d="M0,0V15.81C13,36.92,27.64,56.86,47.69,72.05,99.41,111.27,165,111,224.58,91.58c31.15-10.15,60.09-26.07,89.67-39.8,40.92-19,84.73-46,130.83-49.67,36.26-2.85,70.9,9.42,98.6,31.56,31.77,25.39,62.32,62,103.63,73,40.44,10.79,81.35-6.69,119.13-24.28s75.16-39,116.92-43.05c59.73-5.85,113.28,22.88,168.9,38.84,30.2,8.66,59,6.17,87.09-7.5,22.43-10.89,48-26.93,60.65-49.24V0Z" fill="%236D4C41" opacity=".5"/><path d="M0,0V5.63C149.93,59,314.09,71.32,475.83,42.57c43-7.64,84.23-20.12,127.61-26.46,59-8.63,112.48,12.24,165.56,35.4C827.93,77.22,886,95.24,951.2,90c86.53-7,172.46-45.71,248.8-84.81V0Z" fill="%236D4C41"/></svg>');
+        background-size: cover;
+        transform: rotate(180deg);
+      }
+
+      .footer-content {
+        max-width: 1200px;
+        margin: 0 auto;
+        position: relative;
+        z-index: 1;
+      }
+
+      .footer-logo {
+        font-family: "Playfair Display", serif;
+        font-size: 2rem;
+        margin-bottom: 1rem;
+        color: var(--branco);
+      }
+
+      .footer-links {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 1.5rem;
+        margin: 1.5rem 0;
+      }
+
+      .footer-links a {
+        color: var(--branco);
+        text-decoration: none;
+        transition: opacity 0.3s;
+      }
+
+      .footer-links a:hover {
+        opacity: 0.7;
+      }
+
+      .social-footer {
+        margin: 1.5rem 0;
+        display: flex;
+        justify-content: center;
+        gap: 1rem;
+      }
+
+      .social-footer a {
+        color: var(--branco);
+        font-size: 1.2rem;
+        transition: color 0.3s;
+      }
+
+      .social-footer a:hover {
+        color: var(--verde-agua);
+      }
+
+      .copy {
+        margin-top: 2rem;
+        padding-top: 1rem;
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+        color: rgba(255, 255, 255, 0.7);
+        font-size: 0.9rem;
+      }
+
+      /* Media Queries para Desktop */
+      @media (min-width: 768px) {
+        .menu-toggle {
+          display: none;
+        }
+
+        .nav-menu {
+          position: static;
+          height: auto;
+          width: auto;
+          padding: 0;
+          box-shadow: none;
+          background: none;
+        }
+
+        .nav-menu ul {
+          display: flex;
+          gap: 2rem;
+        }
+
+        .nav-menu ul li {
+          margin-bottom: 0;
+        }
+
+        .nav-menu ul li a {
+          border-bottom: none;
+          padding: 0;
+        }
+
+        .hero h1 {
+          font-size: 4rem;
+        }
+
+        .hero p {
+          font-size: 1.5rem;
+        }
+
+        .sobre-content {
+          flex-direction: row;
+        }
+
+        .sobre-imagens {
+          grid-template-columns: 1fr 1fr;
+        }
+      }
+
+      /* Animations */
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(20px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      section {
+        animation: fadeIn 0.8s ease-out;
+      }
+
+      .produto {
+        animation: fadeIn 0.5s ease-out;
+      }
+
+      /* Efeito de ondas */
+      .wave-divider {
+        width: 100%;
+        overflow: hidden;
+        line-height: 0;
+        margin: -1px 0;
+      }
+
+      .wave-divider svg {
+        width: calc(100% + 1.3px);
+        height: 50px;
+        display: block;
+      }
+
+      .wave-divider .shape-fill {
+        fill: var(--areia);
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Header -->
+    <header>
+      <div class="header-container">
+        <a href="#" class="logo"
+          ><i class="fas fa-umbrella-beach"></i> Café Zé-Zéa</a
+        >
+        <button class="menu-toggle" id="menuToggle">
+          <i class="fas fa-bars"></i>
+        </button>
+        <nav class="nav-menu" id="navMenu">
+          <ul>
+            <li><a href="#inicio">Início</a></li>
+            <li><a href="#sobre">Sobre</a></li>
+            <li><a href="#cardapio">Menu</a></li>
+            <li><a href="#localizacao">Localização</a></li>
+            <li><a href="#contato">Contato</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="inicio">
+      <div class="hero-content">
+        <h1>O seu café à beira-mar em Faro</h1>
+        <p>
+          Bem-vindo ao Zé-Zéa, onde o aroma do café se mistura com a brisa do
+          oceano.
+        </p>
+        <div class="hero-buttons">
+          <a href="#cardapio" class="btn">Ver Menu</a>
+          <a href="#localizacao" class="btn btn-outline">Como Chegar</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Sobre -->
+    <section class="sobre" id="sobre">
+      <div class="container">
+        <h2>Sobre Nós</h2>
+        <div class="sobre-content">
+          <div class="sobre-texto">
+            <p>
+              Desde 2012, o Café Zé-Zéa é um refúgio à beira-mar em Faro, onde
+              moradores e turistas se encontram para desfrutar de momentos
+              especiais. Nossa localização privilegiada oferece vistas
+              deslumbrantes da Ria Formosa enquanto você saboreia nosso café
+              artesanal.
+            </p>
+            <p>
+              Nosso espaço foi cuidadosamente projetado para combinar conforto e
+              estilo rústico, com elementos que homenageiam a tradição pesqueira
+              do Algarve. As cadeiras de madeira desgastada pelo tempo e os
+              detalhes em corda náutica criam uma atmosfera única.
+            </p>
+            <p>
+              Nossos grãos são selecionados entre os melhores produtores
+              portugueses e torrados localmente, garantindo frescor e qualidade
+              em cada xícara. Complementamos nossa oferta com doces regionais e
+              snacks preparados na hora.
+            </p>
+          </div>
+          <div class="sobre-imagens">
+            <div class="sobre-imagem">
+              <img
+                src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80"
+                alt="Interior do Café Zé-Zéa"
+              />
+            </div>
+            <div class="sobre-imagem">
+              <img
+                src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1374&q=80"
+                alt="Vista do mar do Café Zé-Zéa"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Cardápio -->
+    <section class="cardapio" id="cardapio">
+      <div class="container">
+        <h2>Nosso Cardápio</h2>
+        <div class="categorias">
+          <button class="categoria-btn active">Todos</button>
+          <button class="categoria-btn">Cafés</button>
+          <button class="categoria-btn">Bebidas</button>
+          <button class="categoria-btn">Snacks</button>
+          <button class="categoria-btn">Doces</button>
+        </div>
+        <div class="produtos">
+          <!-- Produto 1 -->
+          <div class="produto">
+            <div class="produto-imagem">
+              <img
+                src="https://images.unsplash.com/photo-1541167760496-1628856ab772?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1337&q=80"
+                alt="Café Expresso"
+              />
+            </div>
+            <div class="produto-info">
+              <h3>Café da Praia</h3>
+              <p class="descricao">
+                Expresso intenso servido com vista para o mar, acompanhado de
+                biscoito regional.
+              </p>
+              <span class="preco">€1,80</span>
+            </div>
+          </div>
+          <!-- Produto 2 -->
+          <div class="produto">
+            <div class="produto-imagem">
+              <img
+                src="https://images.unsplash.com/photo-1568649929103-28ffbefaca1e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80"
+                alt="Pastel de Nata"
+              />
+            </div>
+            <div class="produto-info">
+              <h3>Pastel de Nata</h3>
+              <p class="descricao">
+                O clássico português com toque especial do Zé-Zéa, crocante e
+                cremoso.
+              </p>
+              <span class="preco">€2,20</span>
+            </div>
+          </div>
+          <!-- Continuação a partir da seção de Cardápio -->
+
+          <!-- Produto 4 -->
+          <div class="produto">
+            <div class="produto-imagem">
+              <img
+                src="https://images.unsplash.com/photo-1596803244618-8dbee441d70b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1471&q=80"
+                alt="Sumo de Laranja Natural"
+              />
+            </div>
+            <div class="produto-info">
+              <h3>Sumo de Laranja Natural</h3>
+              <p class="descricao">
+                Feito na hora com laranjas algarvias, refrescante para dias
+                quentes.
+              </p>
+              <span class="preco">€3,00</span>
+            </div>
+          </div>
+          <!-- Produto 5 -->
+          <div class="produto">
+            <div class="produto-imagem">
+              <img
+                src="https://images.unsplash.com/photo-1554119921-6c5a2c0ace83?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80"
+                alt="Sandes de Atum"
+              />
+            </div>
+            <div class="produto-info">
+              <h3>Sandes de Atum Fresco</h3>
+              <p class="descricao">
+                Atum do Algarve com maionese caseira e alface em pão artesanal.
+              </p>
+              <span class="preco">€4,50</span>
+            </div>
+          </div>
+          <!-- Produto 6 -->
+          <div class="produto">
+            <div class="produto-imagem">
+              <img
+                src="https://images.unsplash.com/photo-1563729784474-d77dbb933a9e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1374&q=80"
+                alt="Limão Gelado"
+              />
+            </div>
+            <div class="produto-info">
+              <h3>Limão Gelado da Praia</h3>
+              <p class="descricao">
+                Bebida refrescante com limão fresco, hortelã e gelo picado.
+              </p>
+              <span class="preco">€2,80</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Localização -->
+    <section class="localizacao" id="localizacao">
+      <div class="container">
+        <h2>Onde Estamos</h2>
+        <p style="text-align: center; max-width: 800px; margin: 0 auto 1.5rem">
+          Localizados à beira-mar em Faro, com vista privilegiada para a Ria
+          Formosa.
+        </p>
+        <div class="mapa-container">
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d25487.825443531114!2d-7.9986868884553095!3d37.01031689832738!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd054d214072e269%3A0xd236c1cdca43ff36!2zQ2Fmw6kgWsOpLVrDqWE!5e0!3m2!1spt-BR!2sbr!4v1749144868750!5m2!1spt-BR!2sbr"
+            width="600"
+            height="450"
+            style="border: 0"
+            allowfullscreen=""
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+          ></iframe>
+        </div>
+        <div class="info-local">
+          <p>
+            <i class="fas fa-map-marker-alt"></i> <strong>Endereço:</strong> Av.
+            Poente 50, 8005-520 Faro, Portugal
+          </p>
+          <p>
+            <i class="fas fa-clock"></i> <strong>Horário:</strong> Seg-Dom: 7h00
+            - 22h00
+          </p>
+          <p>
+            <i class="fas fa-phone"></i> <strong>Telefone:</strong> +351 289 123
+            456
+          </p>
+          <p>
+            <i class="fas fa-umbrella-beach"></i>
+            <strong>Especial:</strong> Estacionamento gratuito para clientes
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contato -->
+    <section class="contato" id="contato">
+      <div class="container">
+        <h2>Entre em Contato</h2>
+        <div class="contato-form">
+          <div class="form-group">
+            <label for="nome">Nome</label>
+            <input type="text" id="nome" required placeholder="Seu nome" />
+          </div>
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input
+              type="email"
+              id="email"
+              required
+              placeholder="seu@email.com"
+            />
+          </div>
+          <div class="form-group">
+            <label for="mensagem">Mensagem</label>
+            <textarea
+              id="mensagem"
+              required
+              placeholder="Como podemos ajudar?"
+            ></textarea>
+          </div>
+          <button type="submit" class="btn">Enviar Mensagem</button>
+        </div>
+        <div class="redes-sociais">
+          <a
+            href="https://wa.me/351912345678"
+            target="_blank"
+            aria-label="WhatsApp"
+            ><i class="fab fa-whatsapp"></i
+          ></a>
+          <a
+            href="https://instagram.com/cafezeea"
+            target="_blank"
+            aria-label="Instagram"
+            ><i class="fab fa-instagram"></i
+          ></a>
+          <a
+            href="https://facebook.com/cafezeea"
+            target="_blank"
+            aria-label="Facebook"
+            ><i class="fab fa-facebook"></i
+          ></a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+      <div class="footer-content">
+        <div class="footer-logo">
+          <i class="fas fa-umbrella-beach"></i> Café Zé-Zéa
+        </div>
+        <div class="footer-links">
+          <a href="#inicio">Início</a>
+          <a href="#sobre">Sobre</a>
+          <a href="#cardapio">Menu</a>
+          <a href="#localizacao">Localização</a>
+          <a href="#contato">Contato</a>
+        </div>
+        <div class="social-footer">
+          <a
+            href="https://wa.me/351912345678"
+            target="_blank"
+            aria-label="WhatsApp"
+            ><i class="fab fa-whatsapp"></i
+          ></a>
+          <a
+            href="https://instagram.com/cafezeea"
+            target="_blank"
+            aria-label="Instagram"
+            ><i class="fab fa-instagram"></i
+          ></a>
+          <a
+            href="https://facebook.com/cafezeea"
+            target="_blank"
+            aria-label="Facebook"
+            ><i class="fab fa-facebook"></i
+          ></a>
+        </div>
+        <div class="copy">
+          &copy; 2023 Café Zé-Zéa. Todos os direitos reservados. | Faro,
+          Portugal
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      // Menu Mobile Toggle
+      const menuToggle = document.getElementById("menuToggle");
+      const navMenu = document.getElementById("navMenu");
+
+      menuToggle.addEventListener("click", () => {
+        navMenu.classList.toggle("active");
+        menuToggle.querySelector("i").classList.toggle("fa-bars");
+        menuToggle.querySelector("i").classList.toggle("fa-times");
+      });
+
+      // Fechar menu ao clicar em um link
+      const navLinks = document.querySelectorAll(".nav-menu a");
+      navLinks.forEach((link) => {
+        link.addEventListener("click", () => {
+          navMenu.classList.remove("active");
+          menuToggle.querySelector("i").classList.add("fa-bars");
+          menuToggle.querySelector("i").classList.remove("fa-times");
+        });
+      });
+
+      // Filtro do Cardápio (simplificado)
+      const categoriaBtns = document.querySelectorAll(".categoria-btn");
+      const produtos = document.querySelectorAll(".produto");
+
+      categoriaBtns.forEach((btn) => {
+        btn.addEventListener("click", () => {
+          // Remover classe active de todos os botões
+          categoriaBtns.forEach((b) => b.classList.remove("active"));
+          // Adicionar classe active ao botão clicado
+          btn.classList.add("active");
+
+          const categoria = btn.textContent;
+
+          // Mostrar todos os produtos se for "Todos"
+          if (categoria === "Todos") {
+            produtos.forEach((produto) => {
+              produto.style.display = "block";
+            });
+            return;
+          }
+
+          // Filtrar produtos pela categoria
+          produtos.forEach((produto) => {
+            const produtoCategoria = produto.querySelector("h3").textContent;
+            if (
+              (categoria === "Cafés" && produtoCategoria.includes("Café")) ||
+              (categoria === "Bebidas" &&
+                (produtoCategoria.includes("Sumo") ||
+                  produtoCategoria.includes("Limão"))) ||
+              (categoria === "Snacks" && produtoCategoria.includes("Sandes")) ||
+              (categoria === "Doces" && produtoCategoria.includes("Pastel"))
+            ) {
+              produto.style.display = "block";
+            } else {
+              produto.style.display = "none";
+            }
+          });
+        });
+      });
+
+      // Smooth Scrolling
+      document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+        anchor.addEventListener("click", function (e) {
+          e.preventDefault();
+          document.querySelector(this.getAttribute("href")).scrollIntoView({
+            behavior: "smooth",
+          });
+        });
+      });
+
+      // Animação ao rolar
+      const observerOptions = {
+        threshold: 0.1,
+      };
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.style.animation = "fadeIn 0.8s ease-out forwards";
+          }
+        });
+      }, observerOptions);
+
+      document.querySelectorAll("section").forEach((section) => {
+        observer.observe(section);
+      });
+    </script>
+  </body>
+</html>
